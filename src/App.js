@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import ListAudio from "./components/listaudio";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchAudioList } from "./reducers/usersreducer";
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { fetchAudioList } from './asyncActions/audios';
+import Dashboard from './containers/Dashboard';
 
 const App = () => {
-  const userUid = useSelector((state) => state.users.userUid)
+  const userUid = useSelector((state) => state.audio.userUid)
   const dispatch = useDispatch()
   console.log(userUid);
 
@@ -13,12 +13,11 @@ const App = () => {
   // if not already set
   useEffect(() => {
     dispatch(fetchAudioList(userUid));
-    console.log('I executed ...')
   }, []);
 
   return (
     <div className="App">
-      <ListAudio />
+      <Dashboard />
     </div>
   );
 }

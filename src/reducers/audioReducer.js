@@ -1,15 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios";
 import { v4 as uuid } from 'uuid';
+import { fetchAudioList } from '../asyncActions/audios';
 
-export const fetchAudioList = createAsyncThunk(
-  "user/fetchAudioList",
-  (userId) =>
-    axios
-      .get(`http://localhost:5001/fir-a0f2a/us-central1/audios/${userId}`)
-      .then((response) => response.data)
-      .catch((error) => error)
-);
 
 const initialState = {
   userUid: uuid(),
@@ -20,7 +13,7 @@ const initialState = {
   }
 }
 
-export const userReducer = createSlice({
+export const audioReducer = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -54,6 +47,6 @@ export const userReducer = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setUserId } = userReducer.actions
+export const { setUserId } = audioReducer.actions
 
-export default userReducer.reducer
+export default audioReducer.reducer

@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import Accordion from "../components/accordian";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { postUserFeedback } from "../asyncActions/audios";
+import AudioAccordian from "./components/AudioAccordian";
 
-const ListAudio = () => {
-    const audioList = useSelector((state) => state.users.audioList)
-    const [userInputData, setuserInputData] = useState([])
-    
+const Dashboard = () => {
+    const audioList = useSelector((state) => state.audio.audioList)
+    const [userInputData, setUserInputData] = useState([])
+    const userUid = useSelector((state) => state.audio.userUid)
+
+    const dispatch = useDispatch();
+
     const handleChange = (audioId, inputData) => {
         inputData.audioId = audioId
-        let tempArr = userInputData
-        tempArr[audioId] = inputData
-        setuserInputData(tempArr)
+        inputData.audiobility = inputData.audiobility === 'true'
+        setUserInputData([...userInputData.concat([inputData])])
     }
 
     const submitData = (event) => {
         event.preventDefault();
-        console.log(userInputData)
+        dispatch(postUserFeedback({userId: userUid ,data: userInputData}))
     }
 
     return (
@@ -27,7 +30,7 @@ const ListAudio = () => {
                 <>
                     {
                         audioList.data.map((audio, index) => {
-                            return <Accordion key={index}
+                            return <AudioAccordian key={index}
                                 title={audio.audioId}
                                 audioUrl={audio.path}
                                 seqNo={index}
@@ -43,4 +46,4 @@ const ListAudio = () => {
     )
 }
 
-export default ListAudio;
+export default Dashboard;

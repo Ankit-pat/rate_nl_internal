@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 //import UserOptions from "../components/useroptions";
 import 'react-h5-audio-player/lib/styles.css';
-import "./useroptions.css"
+import "../../styles/useroptions.css"
 
-const Accordion = ({ title, audioUrl, seqNo, onListOptionChange }) => {
+const AudioAccordian = ({ title, audioUrl, seqNo, onListOptionChange }) => {
     const [isPlayerEnded, SetIsPlayerEnded] = useState(false)
     const [inputData, setInputData] = useState({ audiobility: '', emotion: '' })
 
@@ -22,8 +22,12 @@ const Accordion = ({ title, audioUrl, seqNo, onListOptionChange }) => {
                 ...inputData,
                 audiobility: event.target.value
             })
-        onListOptionChange(inputData)
+        
     }
+    useEffect(() => {
+        console.log(inputData)
+       if (inputData.audiobility !== '' && inputData.emotion !== '') onListOptionChange(inputData)
+    }, [inputData])
 
     return (
         <div className="accordion-item">
@@ -38,7 +42,7 @@ const Accordion = ({ title, audioUrl, seqNo, onListOptionChange }) => {
                     src={audioUrl}
                     onEnded={e => SetIsPlayerEnded(true)}
                 />
-                {isPlayerEnded && (
+                {true && (
                      <div className='user-options'>
                         <div onChange={e => handleChange(e, 'emotion')} >
                             <h5>What emotion do you detect in voice ?</h5>
@@ -81,4 +85,4 @@ const Accordion = ({ title, audioUrl, seqNo, onListOptionChange }) => {
     );
 };
 
-export default Accordion;
+export default AudioAccordian;
