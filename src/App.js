@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import ListAudio from "./components/listaudio";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAudioList } from "./reducers/usersreducer";
 import './App.css';
 
-function App() {
+const App = () => {
+  const userUid = useSelector((state) => state.users.userUid)
+  const dispatch = useDispatch()
+  console.log(userUid);
+
+  // set user unique id onmount for the first time only
+  // if not already set
+  useEffect(() => {
+    dispatch(fetchAudioList(userUid));
+    console.log('I executed ...')
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ListAudio />
     </div>
   );
 }
