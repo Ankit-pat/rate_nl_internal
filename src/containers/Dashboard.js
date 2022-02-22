@@ -5,20 +5,27 @@ import AudioAccordian from "./components/AudioAccordian";
 
 const Dashboard = () => {
     const audioList = useSelector((state) => state.audio.audioList)
-    const [userInputData, setUserInputData] = useState([])
+    const [userInputData, setUserInputData] = useState({})
     const userUid = useSelector((state) => state.audio.userUid)
 
     const dispatch = useDispatch();
 
     const handleChange = (audioId, inputData) => {
         inputData.audioId = audioId
-        inputData.audiobility = inputData.audiobility === 'true'
-        setUserInputData([...userInputData.concat([inputData])])
+        let tempObj = {}
+        tempObj[audioId] = inputData
+        setUserInputData(...userInputData, tempObj)
     }
 
     const submitData = (event) => {
         event.preventDefault();
-        dispatch(postUserFeedback({userId: userUid ,data: userInputData}))
+        console.log(Object.values(userInputData));
+        //dispatch(postUserFeedback({userId: userUid ,data: userInputData}))
+        let alertMessage = 'Thank you for the feedback.';
+        alertMessage += `\r\nYou submitted your response for ${userInputData.length} audio ${userInputData.length > 1 ? 'files' : 'file'} `
+        alert(alertMessage);
+        // refresh the page after feedback submitted
+        //window.location.reload(false)
     }
 
     return (
@@ -33,7 +40,7 @@ const Dashboard = () => {
                             return <AudioAccordian key={index}
                                 title={audio.audioId}
                                 audioUrl={audio.path}
-                                seqNo={index}
+                                audioId={audio.audioId}
                                 onListOptionChange={(inputData) => handleChange(audio.audioId, inputData)} />
                         })
                     }

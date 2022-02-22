@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
-//import UserOptions from "../components/useroptions";
 import 'react-h5-audio-player/lib/styles.css';
 import "../../styles/useroptions.css"
 
-const AudioAccordian = ({ title, audioUrl, seqNo, onListOptionChange }) => {
+const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
     const [isPlayerEnded, SetIsPlayerEnded] = useState(false)
     const [inputData, setInputData] = useState({ audiobility: '', emotion: '' })
 
-    const labelEmotion = "emotion_" + seqNo;
-    const labelSound = "sound_" + seqNo;
+    const labelEmotion = "emotion_" + audioId;
+    const labelSound = "sound_" + audioId;
 
     const handleChange = (event, labelType) => {
         if (labelType === 'emotion')
@@ -22,34 +21,37 @@ const AudioAccordian = ({ title, audioUrl, seqNo, onListOptionChange }) => {
                 ...inputData,
                 audiobility: event.target.value
             })
-        
     }
+
     useEffect(() => {
-        console.log(inputData)
-       if (inputData.audiobility !== '' && inputData.emotion !== '') onListOptionChange(inputData)
+        //console.log(inputData)
+        if (inputData.audiobility !== '' || inputData.emotion !== '') 
+            onListOptionChange(inputData)
     }, [inputData])
 
     return (
         <div className="accordion-item">
             <div className="accordion-title">
-                <div>{seqNo + 1} {title}</div>
+                <div>{title}</div>
             </div>
-            
+
             <div className="accordion-content">
                 <AudioPlayer
                     showJumpControls={false}
+                    // customProgressBarSection={[]}
+                    customVolumeControls={[]}
                     customAdditionalControls={[]}
                     src={audioUrl}
                     onEnded={e => SetIsPlayerEnded(true)}
                 />
-                {true && (
-                     <div className='user-options'>
+                {isPlayerEnded && (
+                    <div className='user-options'>
                         <div onChange={e => handleChange(e, 'emotion')} >
                             <h5>What emotion do you detect in voice ?</h5>
                             <label className="container">Neutral<input type="radio" value="neutral" name={labelEmotion} />
                                 <span className="checkmark"></span>
                             </label>
-                            <label className="container">Happy<input type="radio" value="happy" name={labelEmotion}/>
+                            <label className="container">Happy<input type="radio" value="happy" name={labelEmotion} />
                                 <span className="checkmark"></span>
                             </label>
                             <label className="container">Sad<input type="radio" value="sad" name={labelEmotion} />
@@ -71,10 +73,10 @@ const AudioAccordian = ({ title, audioUrl, seqNo, onListOptionChange }) => {
 
                         <div onChange={e => handleChange(e, 'sound')} >
                             <h5>Is there anything wrong with the sound ?</h5>
-                            <label className="container">Yes<input type="radio" name={labelSound} value="false" />
+                            <label className="container">Yes<input type="radio" name={labelSound} value="true" />
                                 <span className="checkmark"></span>
                             </label>
-                            <label className="container">No<input type="radio" name={labelSound} value="true" />
+                            <label className="container">No<input type="radio" name={labelSound} value="false" />
                                 <span className="checkmark"></span>
                             </label>
                         </div>

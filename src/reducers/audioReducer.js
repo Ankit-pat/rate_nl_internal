@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from "axios";
+import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 import { fetchAudioList } from '../asyncActions/audios';
 

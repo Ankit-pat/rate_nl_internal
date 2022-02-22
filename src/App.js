@@ -7,7 +7,6 @@ import Dashboard from './containers/Dashboard';
 const App = () => {
   const userUid = useSelector((state) => state.audio.userUid)
   const dispatch = useDispatch()
-  console.log(userUid);
 
   // set user unique id onmount for the first time only
   // if not already set
