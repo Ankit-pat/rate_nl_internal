@@ -14,18 +14,19 @@ const Dashboard = () => {
         inputData.audioId = audioId
         let tempObj = {}
         tempObj[audioId] = inputData
-        setUserInputData(...userInputData, tempObj)
+        setUserInputData(Object.assign(userInputData, tempObj))
     }
 
     const submitData = (event) => {
         event.preventDefault();
-        console.log(Object.values(userInputData));
-        //dispatch(postUserFeedback({userId: userUid ,data: userInputData}))
+        //console.log(userInputData);
+        let inputDataArr = Object.values(userInputData)
+        dispatch(postUserFeedback({userId: userUid ,data: inputDataArr}))
         let alertMessage = 'Thank you for the feedback.';
-        alertMessage += `\r\nYou submitted your response for ${userInputData.length} audio ${userInputData.length > 1 ? 'files' : 'file'} `
+        alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'} `
         alert(alertMessage);
         // refresh the page after feedback submitted
-        //window.location.reload(false)
+        window.location.reload(false)
     }
 
     return (
