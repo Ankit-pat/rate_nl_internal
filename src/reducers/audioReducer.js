@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
-import { fetchAudioList } from '../asyncActions/audios';
+import { fetchAudioList, postUserFeedback } from '../asyncActions/audios';
 
 
 const initialState = {
@@ -9,6 +9,10 @@ const initialState = {
     status: 'idle',
     data: {},
     error: {},
+  },
+  userFeedback: {
+    status: '',
+    error: {}
   }
 }
 
@@ -39,6 +43,18 @@ export const audioReducer = createSlice({
       state.audioList = {
         status: "idle",
         data: {},
+        error: action.payload,
+      };
+    },
+    [postUserFeedback.fulfilled]: (state, action) => {
+      state.userFeedback = {
+        status: "success",
+        error: {},
+      };
+    },
+    [postUserFeedback.rejected]: (state, action) => {
+      state.userFeedback = {
+        status: "error",
         error: action.payload,
       };
     },

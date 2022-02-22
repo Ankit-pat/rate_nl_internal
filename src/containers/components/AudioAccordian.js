@@ -24,7 +24,6 @@ const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
     }
 
     useEffect(() => {
-        //console.log(inputData)
         if (inputData.audiobility !== '' || inputData.emotion !== '') 
             onListOptionChange(inputData)
     }, [inputData])
@@ -38,7 +37,7 @@ const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
             <div className="accordion-content">
                 <AudioPlayer
                     showJumpControls={false}
-                    customProgressBarSection={[]}
+                    //customProgressBarSection={[]}
                     customVolumeControls={[]}
                     customAdditionalControls={[]}
                     src={audioUrl}

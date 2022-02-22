@@ -5,8 +5,9 @@ import AudioAccordian from "./components/AudioAccordian";
 
 const Dashboard = () => {
     const audioList = useSelector((state) => state.audio.audioList)
-    const [userInputData, setUserInputData] = useState({})
     const userUid = useSelector((state) => state.audio.userUid)
+    const userFeedback = useSelector((state) => state.audio.userFeedback)
+    const [userInputData, setUserInputData] = useState({})
 
     const dispatch = useDispatch();
 
@@ -19,14 +20,17 @@ const Dashboard = () => {
 
     const submitData = (event) => {
         event.preventDefault();
-        //console.log(userInputData);
         let inputDataArr = Object.values(userInputData)
+        // call user feedback put api
         dispatch(postUserFeedback({userId: userUid ,data: inputDataArr}))
+
         let alertMessage = 'Thank you for the feedback.';
-        alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'} `
-        alert(alertMessage);
-        // refresh the page after feedback submitted
-        window.location.reload(false)
+        alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
+        if(userFeedback.status == 'success') {
+            alert(alertMessage);
+            // refresh the page after feedback submitted
+            window.location.reload(false)
+        }
     }
 
     return (
