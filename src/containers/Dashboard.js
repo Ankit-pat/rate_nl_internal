@@ -25,8 +25,6 @@ const Dashboard = () => {
         // call user feedback put api
         dispatch(postUserFeedback({ userId: userUid, data: inputDataArr }))
 
-        let inputDataArr = Object.values(userInputData)
-
         let alertMessage = 'Thank you for the feedback.';
         alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
 
