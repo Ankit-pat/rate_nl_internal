@@ -57,7 +57,7 @@ const Dashboard = () => {
                     }
 
                     <div className="center">
-                        {userFeedback.status !== 'success' && (
+                        {userFeedback.status === '' && (
                             <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
                         )}
                         {userFeedback.status === 'saving' && <p>Saving feedback ...</p>}
