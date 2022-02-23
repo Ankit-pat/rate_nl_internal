@@ -93,7 +93,7 @@ const Dashboard = () => {
                     You submitted your response for {answerCount} audio {answerCount > 1 ? 'files' : 'file'}
                 </div>
             </div>
-            <div className={`modal__backdrop ${showPopup && 'show'}`}></div>
+            <div className={`modal__backdrop ${showPopup && 'show'}`} onClick={hidePopup}></div>
         </div>
     )
 }
