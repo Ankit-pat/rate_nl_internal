@@ -37,7 +37,7 @@ const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
             <div className="accordion-content">
                 <AudioPlayer
                     showJumpControls={false}
-                    customProgressBarSection={[]}
+                    //customProgressBarSection={[]}
                     customVolumeControls={[]}
                     customAdditionalControls={[]}
                     src={audioUrl}

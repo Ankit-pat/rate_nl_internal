@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { postUserFeedback } from "../asyncActions/audios";
+import {resetFeedback} from "../reducers/audioReducer";
 import AudioAccordian from "./components/AudioAccordian";
 
 const Dashboard = () => {
@@ -22,16 +23,33 @@ const Dashboard = () => {
         event.preventDefault();
         let inputDataArr = Object.values(userInputData)
         // call user feedback put api
-        dispatch(postUserFeedback({userId: userUid ,data: inputDataArr}))
+        dispatch(postUserFeedback({ userId: userUid, data: inputDataArr }))
+
+        let inputDataArr = Object.values(userInputData)
 
         let alertMessage = 'Thank you for the feedback.';
         alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
-        if(userFeedback.status == 'success') {
+
+        if (userFeedback.status === 'success') {
             alert(alertMessage);
             // refresh the page after feedback submitted
             window.location.reload(false)
         }
     }
+
+    // useEffect(() => {
+    //     let inputDataArr = Object.values(userInputData)
+
+    //     let alertMessage = 'Thank you for the feedback.';
+    //     alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
+
+    //     if (userFeedback.status === 'success') {
+    //         dispatch(resetFeedback())
+    //         alert(alertMessage);
+    //         // refresh the page after feedback submitted
+    //         window.location.reload(false)
+    //     }
+    // }, [submitData])
 
     return (
         <div className="centered-div">
@@ -49,8 +67,12 @@ const Dashboard = () => {
                                 onListOptionChange={(inputData) => handleChange(audio.audioId, inputData)} />
                         })
                     }
+
                     <div className="center">
-                        <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
+                        {userFeedback.status !== 'saving' && (
+                            <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
+                        )}
+                        {userFeedback.status === 'saving' && <p>Saving feedback ...</p>}
                     </div>
                 </>
             )}

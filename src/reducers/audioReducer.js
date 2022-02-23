@@ -7,7 +7,7 @@ const initialState = {
   userUid: uuid(),
   audioList: {
     status: 'idle',
-    data: {},
+    data: [{"audioId":"0jc07qd7f_1_1_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F1_1_1_2.wav?alt=media","audioName":"1_1_1_2.wav"},{"audioId":"0jc07qd7f_1_2_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F1_2_1_1.wav?alt=media","audioName":"1_2_1_1.wav"},{"audioId":"0jc07qd7f_1_1_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F1_1_1_1.wav?alt=media","audioName":"1_1_1_1.wav"},{"audioId":"0jc07qd7f_1_2_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F1_2_1_2.wav?alt=media","audioName":"1_2_1_2.wav"},{"audioId":"0jc07qd7f_2_1_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_1_1_1.wav?alt=media","audioName":"2_1_1_1.wav"},{"audioId":"0jc07qd7f_2_1_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_1_1_2.wav?alt=media","audioName":"2_1_1_2.wav"},{"audioId":"0jc07qd7f_2_1_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_1_2_1.wav?alt=media","audioName":"2_1_2_1.wav"},{"audioId":"0jc07qd7f_2_1_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_1_2_2.wav?alt=media","audioName":"2_1_2_2.wav"},{"audioId":"0jc07qd7f_2_2_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_2_1_1.wav?alt=media","audioName":"2_2_1_1.wav"},{"audioId":"0jc07qd7f_2_2_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_2_1_2.wav?alt=media","audioName":"2_2_1_2.wav"},{"audioId":"0jc07qd7f_2_2_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_2_2_1.wav?alt=media","audioName":"2_2_2_1.wav"},{"audioId":"0jc07qd7f_2_2_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F2_2_2_2.wav?alt=media","audioName":"2_2_2_2.wav"},{"audioId":"0jc07qd7f_3_1_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_1_1_1.wav?alt=media","audioName":"3_1_1_1.wav"},{"audioId":"0jc07qd7f_3_1_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_1_1_2.wav?alt=media","audioName":"3_1_1_2.wav"},{"audioId":"0jc07qd7f_3_1_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_1_2_1.wav?alt=media","audioName":"3_1_2_1.wav"},{"audioId":"0jc07qd7f_3_1_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_1_2_2.wav?alt=media","audioName":"3_1_2_2.wav"},{"audioId":"0jc07qd7f_3_2_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_2_1_1.wav?alt=media","audioName":"3_2_1_1.wav"},{"audioId":"0jc07qd7f_3_2_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_2_1_2.wav?alt=media","audioName":"3_2_1_2.wav"},{"audioId":"0jc07qd7f_3_2_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_2_2_1.wav?alt=media","audioName":"3_2_2_1.wav"},{"audioId":"0jc07qd7f_3_2_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F3_2_2_2.wav?alt=media","audioName":"3_2_2_2.wav"},{"audioId":"0jc07qd7f_4_1_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_1_1_1.wav?alt=media","audioName":"4_1_1_1.wav"},{"audioId":"0jc07qd7f_4_1_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_1_1_2.wav?alt=media","audioName":"4_1_1_2.wav"},{"audioId":"0jc07qd7f_4_1_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_1_2_1.wav?alt=media","audioName":"4_1_2_1.wav"},{"audioId":"0jc07qd7f_4_1_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_1_2_2.wav?alt=media","audioName":"4_1_2_2.wav"},{"audioId":"0jc07qd7f_4_2_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_2_1_1.wav?alt=media","audioName":"4_2_1_1.wav"},{"audioId":"0jc07qd7f_4_2_1_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_2_1_2.wav?alt=media","audioName":"4_2_1_2.wav"},{"audioId":"0jc07qd7f_4_2_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_2_2_1.wav?alt=media","audioName":"4_2_2_1.wav"},{"audioId":"0jc07qd7f_4_2_2_2","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F4_2_2_2.wav?alt=media","audioName":"4_2_2_2.wav"},{"audioId":"0jc07qd7f_5_1_1_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F5_1_1_1.wav?alt=media","audioName":"5_1_1_1.wav"},{"audioId":"0jc07qd7f_5_1_2_1","actorName":"0jc07qd7f","users":[],"path":"https://firebasestorage.googleapis.com/v0/b/fir-a0f2a.appspot.com/o/RateNL%2F0jc07qd7f%2F5_1_2_1.wav?alt=media","audioName":"5_1_2_1.wav"}],
     error: {},
   },
   userFeedback: {
@@ -20,12 +20,12 @@ export const audioReducer = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserId: (state, action) => {
-      state.userUid = action.payload
-    },
+    resetFeedback(state) {
+      state.userFeedback.status = ''
+    }
   },
   extraReducers: {
-    [fetchAudioList.pending]: (state, action) => {
+    [fetchAudioList.pending]: (state) => {
       state.audioList = {
         status: "loading",
         data: {},
@@ -46,7 +46,13 @@ export const audioReducer = createSlice({
         error: action.payload,
       };
     },
-    [postUserFeedback.fulfilled]: (state, action) => {
+    [postUserFeedback.pending]: (state) => {
+      state.userFeedback = {
+        status: "saving",
+        error: {},
+      };
+    },
+    [postUserFeedback.fulfilled]: (state) => {
       state.userFeedback = {
         status: "success",
         error: {},
@@ -62,6 +68,6 @@ export const audioReducer = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setUserId } = audioReducer.actions
+export const { resetFeedback } = audioReducer.actions
 
 export default audioReducer.reducer
