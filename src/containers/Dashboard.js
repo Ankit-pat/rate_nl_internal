@@ -50,30 +50,46 @@ const Dashboard = () => {
     // }, [submitData])
 
     return (
-        <div className="centered-div">
-            <p> :::::::: Audio List :::::::: </p>
+        <div className="audio-list">
+            
             {audioList.status === 'loading' && <p>Loading audio list ...</p>}
             {audioList.status === 'idle' && audioList.data.length < 1 && <p>Empty audio list ...</p>}
             {audioList.status === 'idle' && audioList.data.length > 0 && (
                 <>
-                    {
-                        audioList.data.map((audio, index) => {
-                            return <AudioAccordian key={index}
-                                title={audio.audioId}
-                                audioUrl={audio.path}
-                                audioId={audio.audioId}
-                                onListOptionChange={(inputData) => handleChange(audio.audioId, inputData)} />
-                        })
-                    }
-
-                    <div className="center">
-                        {userFeedback.status !== 'saving' && (
-                            <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
-                        )}
-                        {userFeedback.status === 'saving' && <p>Saving feedback ...</p>}
+                    <div class="alert alert-success text-center">
+                        <h3>Thank you for the feedback!</h3> If you want to give feedback for new audio files, please refresh the page
                     </div>
+                    <div className="show">
+                        {
+                            audioList.data.map((audio, index) => {
+                                return <AudioAccordian key={index}
+                                    title={audio.audioId}
+                                    audioUrl={audio.path}
+                                    audioId={audio.audioId}
+                                    onListOptionChange={(inputData) => handleChange(audio.audioId, inputData)} />
+                            })
+                        }
+
+                        <div className="audio-actions">
+                            {userFeedback.status !== 'saving' && (
+                                <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
+                            )}
+                            {userFeedback.status === 'saving' && <button className="button" type="button" disabled>Saving feedback ...</button>}
+                        </div>
+                    </div>                    
                 </>
             )}
+
+            <div className="modal show">
+                <div className="modal__header">
+                    <h3 class="modal__title">Success...!</h3>
+                    <button type="button" class="modal__close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div className="modal__body">Thank you for the feedback! <br />You submitted your response for 4 audio files</div>
+            </div>
+            <div class="modal__backdrop show"></div>
         </div>
     )
 }

@@ -1,27 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Common + Utilities */
+@import "./styles/common/common";
+@import "./styles/common/utilities";
 
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
-}
+/* Modules */
+@import "./styles/modules/user-options";
+@import "./styles/modules/audio-list";
 
-h1 {
-  text-align: center;
-  margin: 2rem 0 4rem 0;
-}
-
-.centered-div {
-  max-width: 700px;
-  margin: .5em auto;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
+/* Components */
+@import "./styles/components/radio";
+@import "./styles/components/button";
+@import "./styles/components/accordion";
+@import "./styles/components/modal";
+@import "./styles/components/alert";

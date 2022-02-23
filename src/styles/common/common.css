@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #0a3068;
+  --primary-font: "Roboto", sans-serif;
+  --primary-light: #5f7faf;
+  --gray-light: #eaebf3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  font-size: 16px;
+  background: var(--gray-light);
+}
+
+img {
+  max-width: 100%;
+}
