@@ -24,30 +24,20 @@ const Dashboard = () => {
         let inputDataArr = Object.values(userInputData)
         // call user feedback put api
         dispatch(postUserFeedback({ userId: userUid, data: inputDataArr }))
+    }
 
+   useEffect(() => {
+        let inputDataArr = Object.values(userInputData)
         let alertMessage = 'Thank you for the feedback.';
         alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
 
         if (userFeedback.status === 'success') {
+            dispatch(resetFeedback())
             alert(alertMessage);
             // refresh the page after feedback submitted
             window.location.reload(false)
         }
-    }
-
-    // useEffect(() => {
-    //     let inputDataArr = Object.values(userInputData)
-
-    //     let alertMessage = 'Thank you for the feedback.';
-    //     alertMessage += `\r\nYou submitted your response for ${inputDataArr.length} audio ${inputDataArr.length > 1 ? 'files' : 'file'}.`
-
-    //     if (userFeedback.status === 'success') {
-    //         dispatch(resetFeedback())
-    //         alert(alertMessage);
-    //         // refresh the page after feedback submitted
-    //         window.location.reload(false)
-    //     }
-    // }, [submitData])
+    }, [submitData])
 
     return (
         <div className="centered-div">
@@ -67,10 +57,11 @@ const Dashboard = () => {
                     }
 
                     <div className="center">
-                        {userFeedback.status !== 'saving' && (
+                        {userFeedback.status !== 'success' && (
                             <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
                         )}
                         {userFeedback.status === 'saving' && <p>Saving feedback ...</p>}
+                        {userFeedback.status === 'success' && <p>Feedback saved</p>}
                     </div>
                 </>
             )}

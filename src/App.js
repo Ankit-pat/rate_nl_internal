@@ -11,7 +11,7 @@ const App = () => {
   // set user unique id onmount for the first time only
   // if not already set
   useEffect(() => {
-    //dispatch(fetchAudioList(userUid));
+    dispatch(fetchAudioList(userUid));
   }, []);
 
   return (
