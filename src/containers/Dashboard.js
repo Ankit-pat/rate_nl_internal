@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { postUserFeedback } from "../asyncActions/audios";
 import { resetFeedback } from "../reducers/audioReducer";
@@ -70,7 +70,7 @@ const Dashboard = () => {
                         }
 
                         <div className="audio-actions">
-                            {isSubmitted === false && userFeedback.status !== 'saving' && (
+                            {userFeedback.status !== 'saving' && (
                                 <button className="button" type="submit" onClick={(e) => submitData(e)}>Submit</button>
                             )}
                             {userFeedback.status === 'saving' && (
