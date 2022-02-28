@@ -50,7 +50,6 @@ const Dashboard = () => {
         }
     }, [userFeedback])
 
-    console.log(audioList)
     return (
         <div className="audio-list">
 
