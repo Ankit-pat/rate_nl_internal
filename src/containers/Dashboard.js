@@ -10,6 +10,7 @@ const Dashboard = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [showBgMessage, setShowBgMessage] = useState(false)
     const audioList = useSelector((state) => state.audio.audioList)
+    const loading = useSelector((state) => state.audio.loading)
     const userUid = useSelector((state) => state.audio.userUid)
     const userFeedback = useSelector((state) => state.audio.userFeedback)
     const [userInputData, setUserInputData] = useState({})
@@ -42,15 +43,21 @@ const Dashboard = () => {
             setShowPopup(true)
             // reset the userfeedback status to initial state
             dispatch(resetFeedback())
+        } else if (userFeedback.status === 'error') {
+            alert(userFeedback.error)
+            dispatch(resetFeedback())
+
         }
     }, [userFeedback])
 
     return (
         <div className="audio-list">
 
-            {audioList.status === 'loading' && <p>Loading audio list ...</p>}
-            {audioList.status === 'idle' && audioList.data.length < 1 && <p>Empty audio list ...</p>}
-            {audioList.status === 'idle' && audioList.data.length > 0 && (
+            {loading && <div className="loading">
+                <img style={{width: 200, height: 200}} src={require('../images/loading.gif')} />
+                </div>}
+            {!loading && audioList.data.length < 1 && <p>There is no audio to show here.</p>}
+            {!loading && audioList.data.length > 0 && (
                 <>
                     {showBgMessage && (
                         <div className="alert alert-success text-center">
