@@ -6,14 +6,14 @@ import { fetchAudioList, postUserFeedback } from '../asyncActions/audios';
 const initialState = {
   userUid: uuid(),
   audioList: {
-    status: 'idle',
-    data: {},
+    data: [],
     error: {},
   },
   userFeedback: {
     status: '',
     error: {}
-  }
+  },
+  loading: false
 }
 
 export const audioReducer = createSlice({
@@ -22,52 +22,49 @@ export const audioReducer = createSlice({
   reducers: {
     resetFeedback(state) {
       state.userFeedback.status = ''
-    }
-  },
-  extraReducers: {
-    [fetchAudioList.pending]: (state) => {
-      state.audioList = {
-        status: "loading",
-        data: {},
-        error: {},
-      };
     },
-    [fetchAudioList.fulfilled]: (state, action) => {
+    showLoader(state) {
+      state.loading = true
+      state.audioList.data = []
+      state.audioList.error = ''
+    },
+    saveAudioList(state, action) {
       state.audioList = {
-        status: "idle",
         data: action.payload,
-        error: {},
-      };
+        error: '',
+      }
+      state.loading = false
     },
-    [fetchAudioList.rejected]: (state, action) => {
+    errorAudioList(state, action) {
       state.audioList = {
-        status: "idle",
-        data: {},
         error: action.payload,
-      };
+        data: []
+      }
+      state.loading = false
     },
-    [postUserFeedback.pending]: (state) => {
+
+    onFeedbackSuccess(state, action) {
       state.userFeedback = {
-        status: "saving",
-        error: {},
-      };
+        status: 'success',
+        error: action.payload
+      }
     },
-    [postUserFeedback.fulfilled]: (state) => {
+    onFeedbackError(state, action) {
       state.userFeedback = {
-        status: "success",
-        error: {},
-      };
+        status: 'error',
+        error: action.payload
+      }
     },
-    [postUserFeedback.rejected]: (state, action) => {
+    onFeedbackSubmitting(state) {
       state.userFeedback = {
-        status: "error",
-        error: action.payload,
-      };
-    },
+        status: 'saving',
+        error: ''
+      }
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { resetFeedback } = audioReducer.actions
+export const { resetFeedback, saveAudioList, errorAudioList, showLoader, onFeedbackSuccess, onFeedbackError,  onFeedbackSubmitting} = audioReducer.actions
 
 export default audioReducer.reducer
