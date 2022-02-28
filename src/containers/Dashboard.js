@@ -45,6 +45,8 @@ const Dashboard = () => {
             dispatch(resetFeedback())
         } else if (userFeedback.status === 'error') {
             alert(userFeedback.error)
+            dispatch(resetFeedback())
+
         }
     }, [userFeedback])
 
