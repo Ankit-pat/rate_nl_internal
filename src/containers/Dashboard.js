@@ -5,7 +5,7 @@ import { resetFeedback } from "../reducers/audioReducer";
 import AudioAccordian from "./components/AudioAccordian";
 
 const Dashboard = () => {
-    const [answerCount, setAnswerCount] = useState(0);
+    const [answerCount, setAnswerCount] = useState( 0);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false)
@@ -48,13 +48,13 @@ const Dashboard = () => {
             dispatch(resetFeedback())
 
         }
-    }, [userFeedback])
+    }, [userFeedback, dispatch])
 
     return (
         <div className="audio-list">
 
             {loading && <div className="loading">
-                <img style={{ width: 200, height: 200 }} src={require('../images/loading.gif')} />
+                <img alt="" style={{ width: 200, height: 200 }} src={require('../images/loading.gif')} />
             </div>}
             {!loading && audioList.data.length < 1 && <p>There is no audio to show here.</p>}
             {!loading && audioList.data.length > 0 && (
