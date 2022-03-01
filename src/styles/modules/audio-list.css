@@ -1,0 +1,109 @@
+/* Audio List styling */
+.heading {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.audio-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.7rem 1rem 0;
+}
+
+.audio {
+  display: flex;
+  justify-content: space-between;
+}
+
+.audio__icon {
+  width: 3.1rem;
+  min-width: 3.1rem;
+  height: 3.1rem;
+  padding: 0.6rem;
+  border-radius: 100%;
+  background: #fff;
+}
+
+.audio__info {
+  flex: 1;
+  padding-right: 3rem;
+  padding-left: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.audio__title {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Audio player styling */
+.audio .rhap_container {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.audio .rhap_main {
+  flex-direction: row;
+}
+
+.audio .rhap_progress-section {
+  flex: 1;
+}
+
+.audio .rhap_controls-section {
+  flex: none;
+}
+
+.audio .rhap_main-controls-button {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  margin: 0;
+  transition: all 0.3s;
+}
+
+.audio .rhap_main-controls-button:hover {
+  opacity: 0.6;
+}
+
+.audio .rhap_time {
+  font-size: 0.9rem;
+}
+
+.audio .rhap_progress-indicator {
+  background: var(--primary-color);
+}
+
+.audio .rhap_progress-filled {
+  background: var(--primary-light);
+}
+
+.audio .rhap_container svg {
+  color: var(--primary-color);
+}
+
+.audio-actions {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  background: var(--gray-light);
+  padding: 0.8rem 0;
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
