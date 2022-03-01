@@ -1,10 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { errorAudioList, onFeedbackError, onFeedbackSubmitting, onFeedbackSuccess, saveAudioList, showLoader } from "../reducers/audioReducer";
 import { instance } from "../utils/api";
 
 
 export const fetchAudioList = (userId) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     try {
       dispatch(showLoader())
       const response = await instance
@@ -17,7 +16,7 @@ export const fetchAudioList = (userId) =>
 
 
 export const postUserFeedback = ({ userId, data }) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     try {
       dispatch(onFeedbackSubmitting())
       const response = await instance

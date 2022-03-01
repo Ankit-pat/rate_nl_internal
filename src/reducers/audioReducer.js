@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
-import { fetchAudioList, postUserFeedback } from '../asyncActions/audios';
 
 
 const initialState = {
