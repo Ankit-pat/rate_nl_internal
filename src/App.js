@@ -12,7 +12,7 @@ const App = () => {
   // if not already set
   useEffect(() => {
     dispatch(fetchAudioList(userUid));
-  }, []);
+  }, [dispatch, userUid] );
 
   return (
     <div className="App">
