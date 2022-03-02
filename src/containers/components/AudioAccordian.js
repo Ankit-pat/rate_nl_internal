@@ -3,8 +3,8 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import musicIcon from './../../images/music-icon.png';
 
-const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
-    const [isPlayerEnded, SetIsPlayerEnded] = useState(false)
+const AudioAccordian = ({  audioUrl, audioId, onListOptionChange }) => {
+    const [isPlayerEnded, setIsPlayerEnded] = useState(false)
     const [inputData, setInputData] = useState({ audiobility: '', emotion: '' })
 
     const labelEmotion = "emotion_" + audioId;
@@ -26,7 +26,7 @@ const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
     useEffect(() => {
         if (inputData.audiobility !== '' || inputData.emotion !== '')
             onListOptionChange(inputData)
-    }, [inputData])
+    }, [inputData, onListOptionChange])
 
     return (
         <div className="accordion-item">
@@ -34,14 +34,14 @@ const AudioAccordian = ({ title, audioUrl, audioId, onListOptionChange }) => {
                 <div className='audio'>
                     <div className='audio__icon'><img src={musicIcon} alt="Audio Icon" /></div>
                     <div className='audio__info'>
-                        <div className='audio__title'>{title}</div>
+                        <div className='audio__title'>{audioId}</div>
                         <AudioPlayer
                             showJumpControls={false}
                             customProgressBarSection={[]}
                             customVolumeControls={[]}
                             customAdditionalControls={[]}
                             src={audioUrl}
-                            onEnded={e => SetIsPlayerEnded(true)}
+                            onEnded={e => setIsPlayerEnded(true)}
                         />
                     </div>
                 </div>

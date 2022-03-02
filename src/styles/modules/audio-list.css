@@ -100,3 +100,10 @@
   background: var(--gray-light);
   padding: 0.8rem 0;
 }
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
